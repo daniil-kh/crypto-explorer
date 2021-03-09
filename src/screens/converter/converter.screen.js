@@ -2,6 +2,7 @@ import React, {useLayoutEffect} from 'react';
 import {View, Text} from 'react-native';
 
 import DrawerToggleButton from '../../components/drawer-toggle-button/drawer-toggle-button';
+import Converter from '../../components/converter/converter';
 
 import styles from './styles';
 
@@ -16,7 +17,7 @@ const ConverterScreen = ({navigation}) => {
 
   return (
     <View style={styles.mainContainer}>
-      <Text>Converter screen</Text>
+      <Converter converterRate={2} />
     </View>
   );
 };
