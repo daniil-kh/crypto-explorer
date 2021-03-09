@@ -4,15 +4,14 @@ import {View, Text} from 'react-native';
 import COLORS from '../../constants/colors';
 import styles from './styles';
 
-const PercentageText = ({percentage, styleText, styleContainer}) => {
-  const textColor = percentage >= 0 ? COLORS.primaryGreen : COLORS.primaryRed;
+const PercentageText = ({text, styleText, styleContainer}) => {
+  const textColor = text >= 0 ? COLORS.primaryGreen : COLORS.primaryRed;
 
   return (
     <View style={styleContainer}>
-      <Text style={[styles.text, styleText, {color: textColor}]}>{`${(percentage
-        ? percentage
-        : 0
-      ).toPrecision(3)}%`}</Text>
+      <Text style={[styles.text, styleText, {color: textColor}]}>{`${
+        Math.round((text + Number.EPSILON) * 10) / 10
+      }%`}</Text>
     </View>
   );
 };
