@@ -18,6 +18,7 @@ const HomeNavigator = () => (
       inactiveBackgroundColor: COLORS.primaryBlack,
       style: {
         backgroundColor: COLORS.primaryBlack,
+        borderTopColor: COLORS.primaryAqua,
       },
     }}>
     <Tab.Screen
