@@ -16,3 +16,14 @@ export const isLoadingSelector = createSelector(
   coinsSliceSelector,
   (coins) => coins.loading,
 );
+
+export const selectedCoinSelector = createSelector(
+  coinsSliceSelector,
+  (coins) => coins.selectedCoin,
+);
+
+export const coinDataSelector = (id) =>
+  createSelector(
+    coinsSelector,
+    (allCoinsPerPage) => allCoinsPerPage.filter((coin) => coin.id === id),
+  );
