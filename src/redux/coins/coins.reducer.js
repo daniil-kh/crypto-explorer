@@ -12,6 +12,7 @@ const coinReducer = (state = initialState, action) => {
   switch (action.type) {
     case CoinsActionTypes.LOAD_COINS_START:
     case CoinsActionTypes.LOAD_NEW_COINS_PAGE_START:
+    case CoinsActionTypes.LOAD_COIN_DETAIL_START:
       return {
         ...state,
         loading: true,
@@ -47,7 +48,7 @@ const coinReducer = (state = initialState, action) => {
     case CoinsActionTypes.LOAD_COINS_FAIL:
     case CoinsActionTypes.LOAD_COIN_DETAIL_FAIL:
     case CoinsActionTypes.LOAD_NEW_COINS_PAGE_FAIL:
-      console.log(action);
+    case CoinsActionTypes.LOAD_COIN_DETAIL_FAIL:
       return {
         ...state,
         error: action.payload,

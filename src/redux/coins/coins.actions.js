@@ -34,7 +34,7 @@ export const LoadCoinDetailStart = (id) => ({
 });
 
 export const LoadCoinDetailSuccess = (coinData) => ({
-  type: CoinsActionTypes.LOAD_COIN_DETAIL_START,
+  type: CoinsActionTypes.LOAD_COIN_DETAIL_SUCCESS,
   payload: coinData,
 });
 
