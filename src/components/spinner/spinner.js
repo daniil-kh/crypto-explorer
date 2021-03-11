@@ -9,7 +9,7 @@ const Spinner = () => (
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'rgba(0,0,0,0.2)',
+      backgroundColor: COLORS.secondaryBlack,
       width: '100%',
     }}>
     <ActivityIndicator size="large" color={COLORS.primaryAqua} />
