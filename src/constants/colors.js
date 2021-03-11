@@ -8,6 +8,7 @@ const COLORS = {
   primaryAqua: '#14ffec',
   primaryRed: '#FF0000',
   primaryGreen: '#41FF00',
+  primaryYellow: '#FFFF00',
 };
 
 export default COLORS;
