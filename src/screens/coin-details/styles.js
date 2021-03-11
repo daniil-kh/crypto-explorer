@@ -10,24 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.secondaryBlack,
   },
   card: {
-    width: '99%',
-    paddingHorizontal: 15,
-    paddingTop: 5,
-  },
-  headerTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerTitleLogo: {
-    height: 22,
-    width: 22,
-    marginRight: 2,
-  },
-  headerTitleContent: {
-    marginHorizontal: 2,
-  },
-  headerTitleText: {
-    color: COLORS.primaryBlack,
+    width: '100%',
   },
   row: {
     flexDirection: 'row',
@@ -48,6 +31,23 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primaryAqua,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  percentageText: {
+    fontSize: 15,
+  },
+
+  labelText: {
+    color: COLORS.textAqua,
+  },
+
+  header: {
+    backgroundColor: COLORS.lightBlack,
+    paddingHorizontal: 5,
+  },
+
+  flex: {
+    flex: 1,
   },
 });
 
