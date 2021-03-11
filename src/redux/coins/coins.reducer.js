@@ -27,14 +27,15 @@ const coinReducer = (state = initialState, action) => {
       };
 
     case CoinsActionTypes.LOAD_NEW_COINS_PAGE_SUCCESS:
-      const coinsWithNewPage = [
-        ...state.allCoinsPerPage,
-        ...action.payload.coinsData,
-      ];
+      const newPage =
+        action.payload.page === state.page
+          ? state.allCoinsPerPage
+          : action.payload.coinsData;
       return {
         ...state,
-        allCoinsPerPage: coinsWithNewPage,
+        allCoinsPerPage: newPage,
         page: action.payload.page,
+        loading: false,
       };
 
     case CoinsActionTypes.LOAD_COIN_DETAIL_SUCCESS:

@@ -38,23 +38,36 @@ export function* onLoadCoinsOnCurrentPageStart() {
   yield takeLatest(CoinsActionTypes.LOAD_COINS_START, loadCoinsOnCurrentPage);
 }
 
-export function* loadNewCoinsPage() {
+export function* loadNewCoinsPage({payload}) {
   try {
     const prevPage = yield select(pageSelector);
-    const currentPage = prevPage + 1;
-    const response = yield axios.get(marketCoinsUrl, {
-      params: {
-        vs_currency: 'usd',
-        order: 'market_cap_decs',
-        per_page: '100',
-        page: currentPage,
-        sparkline: 'true',
-        price_change_percentage: '1h',
-      },
-    });
-    yield put(
-      LoadNewCoinsPagesSuccess({page: currentPage, coinsData: response.data}),
-    );
+    const currentPage = prevPage + (payload === 'next' ? 1 : -1);
+    if (currentPage > 0) {
+      const response = yield axios.get(marketCoinsUrl, {
+        params: {
+          vs_currency: 'usd',
+          order: 'market_cap_decs',
+          per_page: '100',
+          page: currentPage,
+          sparkline: 'true',
+          price_change_percentage: '1h',
+        },
+      });
+      if (response.data?.length <= 0) {
+        yield put(
+          LoadNewCoinsPagesSuccess({page: prevPage, coinsData: response.data}),
+        );
+      } else {
+        yield put(
+          LoadNewCoinsPagesSuccess({
+            page: currentPage,
+            coinsData: response.data,
+          }),
+        );
+      }
+    } else {
+      yield put(LoadNewCoinsPagesSuccess({page: prevPage, coinsData: []}));
+    }
   } catch (error) {
     yield put(LoadNewCoinsPagesFail(error));
   }

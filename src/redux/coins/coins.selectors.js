@@ -1,5 +1,8 @@
 import {createSelector} from 'reselect';
 
+import {filtersSelector} from '../filters/filters.selectors';
+import {sortByFilter} from '../filters/filter.utils';
+
 export const coinsSliceSelector = (state) => state.coins;
 
 export const pageSelector = createSelector(
@@ -8,8 +11,8 @@ export const pageSelector = createSelector(
 );
 
 export const coinsSelector = createSelector(
-  coinsSliceSelector,
-  (coins) => coins.allCoinsPerPage,
+  [coinsSliceSelector, filtersSelector],
+  (coins, filter) => sortByFilter(coins.allCoinsPerPage, filter),
 );
 
 export const isLoadingSelector = createSelector(
@@ -23,7 +26,6 @@ export const selectedCoinSelector = createSelector(
 );
 
 export const coinDataSelector = (id) =>
-  createSelector(
-    coinsSelector,
-    (allCoinsPerPage) => allCoinsPerPage.filter((coin) => coin.id === id),
+  createSelector(coinsSelector, (allCoinsPerPage) =>
+    allCoinsPerPage.filter((coin) => coin.id === id),
   );

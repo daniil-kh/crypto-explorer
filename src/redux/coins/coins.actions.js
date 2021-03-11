@@ -14,8 +14,9 @@ export const LoadCoinsFail = (error) => ({
   payload: error,
 });
 
-export const LoadNewCoinsPageStart = () => ({
+export const LoadNewCoinsPageStart = (order) => ({
   type: CoinsActionTypes.LOAD_NEW_COINS_PAGE_START,
+  payload: order,
 });
 
 export const LoadNewCoinsPagesSuccess = (coinsData) => ({
