@@ -2,7 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import CoinsScreen from '../screens/coins/coins.screen';
-import CoinDetailsScreen from '../screens/coin-details/coin-details.screen';
 
 import COLORS from '../constants/colors';
 
