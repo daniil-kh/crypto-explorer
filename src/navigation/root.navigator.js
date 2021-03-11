@@ -3,6 +3,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
 import HomeNavigator from './home.navigator';
+import HomeStackNavigator from './homeStack.navigator';
 import AboutNavigator from './about.navigator';
 
 import COLORS from '../constants/colors';
@@ -23,7 +24,7 @@ const RootNavigator = () => (
         },
       }}
       drawerStyle={{backgroundColor: COLORS.secondaryBlack}}>
-      <Drawer.Screen name="Home" component={HomeNavigator} />
+      <Drawer.Screen name="Home" component={HomeStackNavigator} />
       <Drawer.Screen name="About" component={AboutNavigator} />
     </Drawer.Navigator>
   </NavigationContainer>
