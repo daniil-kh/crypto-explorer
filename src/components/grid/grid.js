@@ -6,16 +6,16 @@ import styles from './styles';
 const Grid = ({
   headerData,
   data,
-  numOfRows,
+  numOfColumns,
   renderHeaderItem,
   renderItem,
   keyExtractor,
   style,
   cellContainerStyle,
 }) => {
-  const splitArrayIntoRows = (array, numOfRows) => {
+  const splitArrayIntoRows = (array, numOfColumns) => {
     let result_array = [];
-    const chunkSize = Math.round(array.length / numOfRows);
+    const chunkSize = numOfColumns ? numOfColumns : 1;
     for (
       let element_counter = 0;
       element_counter < array.length;
@@ -31,7 +31,9 @@ const Grid = ({
 
   const renderRow = (data) => {
     return (
-      <View style={styles.row}>
+      <View
+        style={styles.row}
+        key={keyExtractor(data[0]) + keyExtractor(data[1])}>
         {data.map((item) => (
           <View
             style={[styles.cell, cellContainerStyle]}
@@ -43,7 +45,7 @@ const Grid = ({
     );
   };
 
-  const result_array = splitArrayIntoRows(data, numOfRows);
+  const result_array = splitArrayIntoRows(data, numOfColumns);
 
   return (
     <View style={style}>
