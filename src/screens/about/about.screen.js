@@ -1,22 +1,18 @@
 import React, {useLayoutEffect} from 'react';
 import {View, Text} from 'react-native';
 
-import DrawerToggleButton from '../../components/drawer-toggle-button/drawer-toggle-button';
+import DefaultText from '../../components/default-text/default-text';
 
 import styles from './styles';
 
-const AboutScreen = ({navigation}) => {
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <DrawerToggleButton onPress={() => navigation.toggleDrawer()} />
-      ),
-    });
-  }, []);
-
+const AboutScreen = () => {
   return (
     <View style={styles.mainContainer}>
-      <Text>About Screen</Text>
+      <DefaultText text={'CryptoExplorer'} styleText={styles.appName} />
+      <DefaultText
+        text={'Developed by Daniil Khmurovich'}
+        styleText={styles.developerName}
+      />
     </View>
   );
 };
