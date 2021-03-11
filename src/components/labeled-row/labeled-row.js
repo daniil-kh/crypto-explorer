@@ -15,10 +15,14 @@ const LabeledRow = ({style, styleText, styleValue, title, value, type}) => {
   const TextComponent = ValueTypes[type];
 
   return (
-    <View style={[style]}>
-      <DefaultText text={title} styleText={styleText} />
-      <TextComponent text={value} styleText={styleValue} />
-    </View>
+    <>
+      {value && (
+        <View style={[style]}>
+          <DefaultText text={title} styleText={styleText} />
+          <TextComponent text={value} styleText={styleValue} />
+        </View>
+      )}
+    </>
   );
 };
 
