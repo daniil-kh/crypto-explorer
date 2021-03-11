@@ -7,7 +7,7 @@ import CustomButton from '../custom-button/custom-button';
 
 import styles from './styles';
 
-const Converter = ({converterRate, currency}) => {
+const Converter = ({converterRate, currency, onPressCoin, onPressMoney}) => {
   const [coinValue, setCoinValue] = useState('1');
   const [moneyValue, setMoneyValue] = useState(converterRate.toString());
 
@@ -36,6 +36,7 @@ const Converter = ({converterRate, currency}) => {
         <CustomButton
           styleContainer={styles.textInputButton}
           title={currency}
+          onPress={onPressCoin}
         />
       </View>
       <IconButton
@@ -64,7 +65,11 @@ const Converter = ({converterRate, currency}) => {
             if (value.length > 0) setCoinValue(newCoinValue.toString());
           }}
         />
-        <CustomButton styleContainer={styles.textInputButton} title="USD" />
+        <CustomButton
+          styleContainer={styles.textInputButton}
+          title="USD"
+          onPress={onPressMoney}
+        />
       </View>
     </View>
   );
