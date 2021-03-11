@@ -1,46 +1,27 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, ScrollView} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
-import Logo from '../../components/logo/logo';
 import DefaultText from '../../components/default-text/default-text';
 import PercentageText from '../../components/percentage-text/percentage-text';
-import PriceText from '../../components/price-text/price-text';
-import IconButton from '../../components/icon-button/icon-button';
-import Converter from '../../components/converter/converter';
 import Grid from '../../components/grid/grid';
 import LabeledRow from '../../components/labeled-row/labeled-row';
 
 import {selectedCoinSelector} from '../../redux/coins/coins.selectors';
-import {LoadCoinDetailStart} from '../../redux/coins/coins.actions';
 
 import styles from './styles';
 
-const CoinDetailsScreen = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
+const CoinDetailsPriceChartScreen = () => {
   const selectedCoin = useSelector(selectedCoinSelector);
 
+  const {market_data} = selectedCoin;
   const {
-    id,
-    image,
-    name: fullName,
-    symbol: shortName,
-    market_data,
-  } = selectedCoin;
-  const {large: imageUrl} = image;
-  const {
-    current_price: {usd: current_price_usd},
     price_change_percentage_24h,
     price_change_percentage_7d,
     price_change_percentage_14d,
     price_change_percentage_30d,
     price_change_percentage_60d,
     price_change_percentage_1y,
-    price_change_percentage_1h_in_currency: {
-      usd: price_change_percentage_1h_in_currency_usd,
-    },
     market_cap_rank,
     market_cap: {usd: market_cap_usd},
     total_volume: {usd: total_volume_usd},
@@ -57,23 +38,6 @@ const CoinDetailsScreen = () => {
     atl_date: {usd: atl_date_usd},
   } = market_data;
 
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <IconButton
-          name="ios-refresh"
-          onPress={() => dispatch(LoadCoinDetailStart(id))}
-          size={30}
-          style={{
-            marginRight: 5,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        />
-      ),
-    });
-  }, [fullName, shortName]);
-
   const PriceChangeData = {
     priceChange: [
       price_change_percentage_24h,
@@ -89,24 +53,9 @@ const CoinDetailsScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.card}>
-        <View style={styles.header}>
-          <View style={styles.row}>
-            <PriceText text={current_price_usd} styleText={{fontSize: 30}} />
-            <PercentageText
-              text={price_change_percentage_1h_in_currency_usd}
-              styleText={{fontSize: 14}}
-            />
-          </View>
-          <View style={styles.row}>
-            <Converter
-              converterRate={current_price_usd}
-              currency={shortName.toUpperCase()}
-            />
-          </View>
-        </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{flexGrow: 1, paddingBottom: 115}}>
+          contentContainerStyle={{flexGrow: 1}}>
           <View style={styles.row}>
             <DefaultText text={'Here will be price chart'} />
           </View>
@@ -117,7 +66,7 @@ const CoinDetailsScreen = () => {
             style={{flex: 1, width: '100%'}}
             headerData={PriceChangeData.headerData}
             data={PriceChangeData.priceChange}
-            numOfRows={1}
+            numOfColumns={6}
             cellContainerStyle={styles.cell}
             renderItem={(item) => (
               <PercentageText text={item} styleText={styles.percentageText} />
@@ -238,7 +187,7 @@ const CoinDetailsScreen = () => {
   );
 };
 
-export default CoinDetailsScreen;
+export default CoinDetailsPriceChartScreen;
 
 /*
 

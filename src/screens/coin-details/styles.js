@@ -25,29 +25,45 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   cell: {
-    flex: 1,
-    height: 40,
+    height: 50,
     borderWidth: 1,
     borderColor: COLORS.primaryAqua,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   percentageText: {
     fontSize: 15,
   },
-
   labelText: {
     color: COLORS.textAqua,
   },
-
   header: {
     backgroundColor: COLORS.lightBlack,
     paddingHorizontal: 5,
   },
+  list: {
+    width: '90%',
+  },
+  tickersText: {
+    fontSize: 14,
+  },
+  tickersHeaderStyle: {
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: COLORS.lightBlack,
+    marginBottom: 5,
+  },
 
-  flex: {
-    flex: 1,
+  tickersRowStyle: {
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 5,
   },
 });
 
