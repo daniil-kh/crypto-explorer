@@ -29,3 +29,28 @@ export const coinDataSelector = (id) =>
   createSelector(coinsSelector, (allCoinsPerPage) =>
     allCoinsPerPage.filter((coin) => coin.id === id),
   );
+
+export const allAvailableCoinsSelector = createSelector(
+  coinsSliceSelector,
+  (coins) => coins.allAvailableCoins,
+);
+
+export const currentExchangeRateSelector = createSelector(
+  coinsSliceSelector,
+  (coins) => coins.currentExchangeRate,
+);
+
+export const selectedConverterCoinSelector = createSelector(
+  coinsSliceSelector,
+  (coins) => coins.selectedConverterCoin,
+);
+
+export const selectedCoinTickersSelector = createSelector(
+  selectedCoinSelector,
+  (selectedCoin) => selectedCoin.tickers,
+);
+
+export const selectedCoinSymbolSelector = createSelector(
+  selectedCoinSelector,
+  (selectedCoin) => selectedCoin.symbol,
+);
