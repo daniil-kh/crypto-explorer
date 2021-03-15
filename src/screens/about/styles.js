@@ -7,7 +7,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: COLORS.secondaryBlack,
+  },
+
+  appName: {
+    fontSize: 40,
+  },
+  developerName: {
+    fontSize: 20,
   },
 });
 

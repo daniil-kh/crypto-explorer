@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     width: '25%',
     marginHorizontal: 3,
   },
+  innerTouchable: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default styles;

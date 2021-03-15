@@ -8,7 +8,7 @@ const DrawerToggleButton = (props) => {
   return (
     <View style={{marginLeft: 10}}>
       <Icon
-        name="menu-outline"
+        name="md-menu"
         color={COLORS.primaryBlack}
         size={30}
         {...props}

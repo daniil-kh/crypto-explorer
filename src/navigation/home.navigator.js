@@ -18,6 +18,7 @@ const HomeNavigator = () => (
       inactiveBackgroundColor: COLORS.primaryBlack,
       style: {
         backgroundColor: COLORS.primaryBlack,
+        borderTopColor: COLORS.primaryAqua,
       },
     }}>
     <Tab.Screen
@@ -27,7 +28,7 @@ const HomeNavigator = () => (
         title: 'Coins',
         tabBarIcon: ({focused, color, size}) => {
           return (
-            <Icon name="analytics-outline" color={color} size={size + 3} />
+            <Icon name="analytics-outline" color={color} size={30} />
           );
         },
         tabBarLabel: () => null,
@@ -38,7 +39,7 @@ const HomeNavigator = () => (
       component={ConverterNavigator}
       options={{
         tabBarIcon: ({focused, color, size}) => {
-          return <Icon name="cash-outline" color={color} size={size + 3} />;
+          return <Icon name="cash-outline" color={color} size={30} />;
         },
         tabBarLabel: () => null,
       }}

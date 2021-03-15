@@ -3,10 +3,12 @@ import {View, Text} from 'react-native';
 
 import styles from './styles';
 
-const PriceText = ({price, styleText, styleContainer}) => {
+const PriceText = ({text, styleText, styleContainer}) => {
   return (
     <View style={styleContainer}>
-      <Text style={[styles.text, styleText]}>{`$${price}`}</Text>
+      <Text style={[styles.text, styleText]}>{`$${
+        Math.round((text + Number.EPSILON) * 100) / 100
+      }`}</Text>
     </View>
   );
 };

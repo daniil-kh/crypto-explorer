@@ -18,6 +18,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 10,
   },
+
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
 });
 
 export default styles;
